@@ -5,3 +5,5 @@ mlruns/
 
 .env
 /confusion_matrix.png
+
+.DS_Store
