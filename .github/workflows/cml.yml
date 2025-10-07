@@ -58,9 +58,9 @@ jobs:
         run: |
           dvc repro
 
-  build-and-push-docker:
-    runs-on: ubuntu-latest
-    steps:
+  # build-and-push-docker:
+  #   runs-on: ubuntu-latest
+  #   steps:
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -78,7 +78,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: Dockerfile
+          file: ./Dockerfile
           push: true
           tags: javiprietod/mlops-api:latest
 
@@ -86,7 +86,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: Dockerfile.web
+          file: ./Dockerfile.web
           push: true
           tags: javiprietod/mlops-web:latest
 
