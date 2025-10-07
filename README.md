@@ -1,5 +1,9 @@
 # Proyecto de Clasificación del Conjunto de Datos Iris
 
+## Importante para la entrega de las prácticas
+Esto es un repositorio para hacer practicas de la asignatura de MLOps. La documentación de las prácticas se encuentra en la carpeta [documentacion-practicas](./documentacion-practicas). 
+
+
 Este repositorio contiene un proyecto de ejemplo de **Machine Learning** que utiliza un modelo de **Random Forest Classifier** para clasificar el famoso conjunto de datos de **Iris**. El proyecto incluye el código para entrenar el modelo, las dependencias necesarias y un archivo de datos de ejemplo.
 
 ## Ficheros del Repositorio
