@@ -18,4 +18,4 @@ spec:
       - name: mlops-api
         image: gcr.io/modern-bond-175819/mlops-api:latest # <--- Reemplaza
         ports:
-          - containerPort: 5000
+        - containerPort: 5000
