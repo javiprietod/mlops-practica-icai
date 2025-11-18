@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: mlops-web
-          image: gcr.io/modern-bond-175819/mlops-api:latest
+          image: gcr.io/mlops-icai/mlops-api:latest
           ports:
           - containerPort: 8501
           env:
