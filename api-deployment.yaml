@@ -18,4 +18,4 @@ spec:
       - name: mlops-api
         image: gcr.io/mlops-icai/mlops-api:latest # <--- Reemplaza
         ports:
-        - containerPort: 5000
+        - containerPort: 5001
