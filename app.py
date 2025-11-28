@@ -1,6 +1,13 @@
 import joblib
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Response
 import numpy as np
+from prometheus_client import Counter, generate_latest, CONTENT_TYPE_LATEST
+
+PREDICTION_COUNTER = Counter(
+    'iris_prediction_count',
+    'Contador de predicciones del modelo Iris por especie',
+    ['species']
+)
 
 # Cargar el modelo entrenado
 try:
@@ -12,6 +19,10 @@ except FileNotFoundError:
 # Inicializar la aplicación Flask
 app = Flask(__name__)
 
+@app.route('/metrics', methods=['GET'])
+def metrics():
+    return Response(generate_latest(), mimetype=CONTENT_TYPE_LATEST)
+
 @app.route('/predict', methods=['POST'])
 def predict():
     if model is None:
@@ -22,8 +33,14 @@ def predict():
         features = np.array(data['features']).reshape(1, -1)
         # Realizar la predicción
         prediction = model.predict(features)
+        prediction_int = int(prediction[0])
         # Devolver la predicción en formato JSON
-        return jsonify({'prediction': int(prediction[0])})
+        species_map = {0: 'setosa', 1: 'versicolor', 2: 'virginica'}
+        predicted_species = species_map.get(prediction_int, 'unknown')
+
+        PREDICTION_COUNTER.labels(species=predicted_species).inc()
+
+        return jsonify({'prediction': prediction_int, 'species': predicted_species})
     except Exception as e:
         return jsonify({'error': str(e)}), 400
 

@@ -15,7 +15,8 @@ spec:
         app: mlops-api
     spec:
       containers:
-      - name: mlops-api
-        image: gcr.io/mlops-icai/mlops-api:latest # <--- Reemplaza
-        ports:
-        - containerPort: 5001
+        - name: mlops-api
+          image: gcr.io/mlops-icai/mlops-api:latest   # cambia por tu ruta
+          ports:
+            - name: metrics
+              containerPort: 5001

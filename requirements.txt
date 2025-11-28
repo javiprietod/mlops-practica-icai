@@ -9,3 +9,4 @@ seaborn
 dagshub
 Flask
 streamlit
+prometheus-client
